@@ -1,0 +1,307 @@
+.section-footer{
+    background-image: url("../../../assets/images/nearby2\ -\ Copy.png");
+    /* background-color: black; */
+  background-size: cover; /* Cover the entire container */
+  height: auto;
+  /* opacity: 80%; */
+  background-position: center;
+}
+.footer-submit-btn{
+    width: 145px;
+    padding: 5px 5px;
+    border-radius: 10px;
+    border: none;
+    background-color: #c38b74;
+    color: white;
+    font-family: "Mont-light";
+    font-weight: 100;
+}
+.footer-form-section{
+    text-align: center;
+    border: 2px solid white;
+    border-radius: 10px;
+    background:none;
+    padding: 40px 0px;
+}
+.det-footer-form-section{
+    text-align: center;
+    border-radius: 10px;
+    background:none;
+    padding: 40px 0px;
+    display: flex;
+}
+.det-footer-form{
+    width: 100%;
+}
+.det-footer-image-wraper{
+    width: 35%;
+}
+.det-footer-input-txt{
+    background: none;
+    border: none;
+    border: 1px solid white;
+    font-size: 17px;
+    padding: 11px 9px;
+    margin: 10px;
+    color: white;
+    width: 100%;
+}
+.det-footer-input-num{
+    background: none;
+    border: none;
+    border: 1px solid white;
+    font-size: 17px;
+    padding: 11px 9px;
+    margin: 10px;
+    color: white;
+    width: 100%;
+}
+.det-footer-input-email{
+    background: none;
+    border: none;
+    border: 1px solid white;
+    font-size: 17px;
+    padding: 11px 9px;
+    margin: 10px;
+    color: white;
+    width: 100%;
+}
+p.footer-whatsapp-text {
+    margin-top: 55px;
+    font-size: 22px;
+    font-weight: 100;
+    word-spacing: 8px;
+    color: #cccccc;
+    font-family: 'Mont-Light';
+}
+.section-footer {
+    padding: 10px 46px;
+}
+.hr-bottom{
+    margin-top: 20px;
+    margin-bottom: 20px;
+    border: 0;
+    border-top: 1px solid #f78e65;
+}
+.circle-up{
+        font-size: 35px;
+    color: #f78e65;
+    float: right;
+}
+.footer-form-content h1{
+    padding: 40px 10px 0px 10px;
+    font-size: 50px;
+    color: white;
+    font-family: "uni-thin";
+    font-weight: 100;
+}
+.register-span{
+    padding: 40px 10px 0px 10px;
+    font-size: 50px;
+    color: #f78e65;
+    font-family: "uni-thin";
+    font-weight: 100;
+    margin: 0px;
+}
+.footer-form-content p{
+    margin: 0px;
+    padding: 0px 10px 40px 10px;
+    font-size: 16px;
+    color: #a6a6a6;
+    font-family: "Mont-light";
+    font-weight: 100;
+}
+
+.footer-button-arrow{
+    rotate: 90deg;
+    padding: 0px 10px;
+}
+
+.footer-logo-img{
+    width: 100px;
+        margin-top: 26px;
+
+}
+.footer-icons{
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    color: white;
+    margin-top: 20px;
+    text-align: center;
+}
+
+.basic-footer-mid{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+.dis-f-footer {
+    display: flex;
+    justify-content: space-between;
+    gap: 40px;
+}
+
+.footerMid-row-1 li, .footerMid-row-2 li, .footerMid-row-3 li {
+    text-align: left;
+    list-style: none;
+    padding: 2px 0px;
+    font-size: 16px;
+    color: #a6a6a6;
+    font-family: "uni-thin";
+    font-weight: 100;
+
+}
+
+ .footerMid-row-4 li{
+    text-align: left;
+    list-style: none;
+    padding: 2px 0px;
+    font-size: 14px;
+    color: #a6a6a6;
+    font-family: "uni-thin";
+    font-weight: 100;
+ }
+.footerMid-row-4{
+    /* margin-left: 25px; */
+}
+
+.footerMid-row-1 ul , .footerMid-row-2 ul, .footerMid-row-3 ul , .footerMid-row-4 ul{
+        padding: 10px 0px;
+
+}
+
+.footerMid-row-1 h1 , .footerMid-row-2 h1, .footerMid-row-3 h1 , .footerMid-row-4 h1{
+      padding: 20px 10px 0px 10px;
+    font-size: 16px;
+    color: #f78e65;
+    font-family: "uni-thin";
+    font-weight: 100;
+    margin: 0px;
+}
+
+.footer-span-for-padding{
+    margin: 0px 10px;
+}
+.footer-row4-h4{
+    padding: 10px 0px;
+    font-size: 16px;
+    color: #f78e65;
+    font-family: "uni-thin";
+    font-weight: 100;
+    margin: 0px;
+}
+
+.footer-row4-btn{
+    width: 200px;
+    padding: 5px 16px;
+    border-radius: 10px;
+    border: none;
+    background-color: #c38b74;
+    color: white;
+    font-family: "Mont-light";
+    font-weight: 100;
+    font-size: 12px;;
+}
+.footer-icon-text{
+    color: #c38b74;
+    font-family: "Mont-light";
+    font-weight: 100;
+    font-size: 12px;
+    margin: 0px;
+    margin-top: 7px;
+}
+.LuxDubai-footer-img{
+    width: 1025px;
+    padding: 40px 0px;
+    }
+.basic-footer-lower{
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 16px;
+}
+.basic-footer-lower p{
+    color: white;
+    font-family: "Mont-light";
+    font-weight: 100;
+    font-size: 12px;
+    text-align: center;
+}
+.fb,.twiter,.insta,.yt{
+    font-size: 20px;
+    padding: 6px;
+    border-radius: 5px;
+}
+.fb:hover{
+    background-color: rgb(0, 136, 255);
+    color: white;
+
+}
+.twiter:hover{
+    color: white;
+    background-color:rgb(0, 208, 255);
+}
+.insta:hover{
+  background: #f09433; 
+background: -moz-linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%); 
+background: -webkit-linear-gradient(45deg, #f09433 0%,#e6683c 25%,#dc2743 50%,#cc2366 75%,#bc1888 100%); 
+background: linear-gradient(45deg, #f09433 0%,#e6683c 25%,#dc2743 50%,#cc2366 75%,#bc1888 100%); 
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f09433', endColorstr='#bc1888',GradientType=1 );
+  }
+.yt:hover{
+  background: red; 
+  }
+
+@media screen and (max-width: 1150px) {
+ .LuxDubai-footer-img{
+    width: 100%;
+    padding: 40px 0px;
+    }
+
+}
+@media screen and (max-width: 1050px) {
+.LuxDubai-footer-img{
+    width: 100%;
+    padding: 40px 0px;
+    }
+
+}  
+@media screen and (max-width: 990px) {
+.det-footer-image-wraper{
+    width: 100%;
+    margin: auto;
+}
+
+}  
+@media screen and (max-width: 850px) {
+
+.LuxDubai-footer-img{
+    width: 100%;
+    padding: 40px 0px;
+    }
+}
+@media screen and (max-width: 768px) {
+
+.LuxDubai-footer-img{
+    width: 100%;
+    padding: 40px 0px;
+    }
+} 
+@media screen and (max-width: 697px) {
+.LuxDubai-footer-img{
+    width: 100%;
+    padding: 40px 0px;
+    }
+}
+@media screen and (max-width: 650px) {
+ .LuxDubai-footer-img{
+    width: 100%;
+    padding: 40px 0px;
+    }
+}
+@media screen and (max-width: 550px) {
+.LuxDubai-footer-img{
+    width: 100%;
+    padding: 40px 0px;
+    }
+}

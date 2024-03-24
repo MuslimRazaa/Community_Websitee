@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#000000" />
+    <meta name='robots' content='noindex'/>
+    <title>React App</title>
+    <meta name="description" content="Web site created using create-react-app"/>
+    <meta name="keywords" content="Web site created using create-react-app"/>
+    <link rel="canonical" href="" />
+     <meta property="og:title" content="" />
+     <meta property="og:description" content="" />
+     <meta property="og:url" content="" />
+    <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
+    <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
+    <script>
+      // Retrieve values from localStorage
+      const metaTitle = localStorage.getItem('meta_title') || '';
+      const metaDesc = localStorage.getItem('meta_desc') || '';
+      const metaKeywords = localStorage.getItem('meta_keywords') || '';
+
+      // Set meta tags dynamically
+      document.querySelector('title').innerText = metaTitle;
+      document.querySelector('meta[name="description"]').setAttribute('content', metaDesc);
+      document.querySelector('meta[name="keywords"]').setAttribute('content', metaKeywords);
+      document.querySelector('meta[property="og:title"]').setAttribute('content', metaTitle);
+      document.querySelector('meta[property="og:description"]').setAttribute('content', metaDesc);
+    </script>
+    
+  </head>
+  <body>
+    <noscript>You need to enable JavaScript to run this app.</noscript>
+    <div id="root"></div>
+
+  </body>
+</html>

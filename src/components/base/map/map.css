@@ -1,0 +1,53 @@
+.cards-heading{
+     text-align: center;
+    margin: 100px 0px 50px 0px;
+}
+
+.cards-heading h1{
+    color: #0071a4;
+    font-weight: 100;
+    font-family: 'Mont-Regular';
+    font-size: 37px;
+}
+.cards-heading p{
+    margin: 0px;
+    font-family: 'Mont-Light';
+    line-height: 21px;
+    width: 37%;
+    margin: auto;
+}
+
+.Map{
+    width: 100%;
+    height: 70vh;
+    background-image: url("../../../assets/images/map.jpg");
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    border-radius: 30px;
+}
+
+
+@media screen and (max-width: 768px){
+    .cards-heading p{
+    margin: 0px;
+    font-family: 'Mont-Light';
+    line-height: 21px;
+    width: 90%;
+    margin: auto;
+}
+}
+@media  screen and (max-width: 500px){
+    .cards-heading p{
+    margin: 0px;
+    font-family: 'Mont-Light';
+    line-height: 21px;
+    width: 80%;
+    margin: auto;
+}
+
+.Map{
+    width: 100%;
+    height: 55vh;
+}
+}
