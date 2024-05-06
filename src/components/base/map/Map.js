@@ -3,15 +3,15 @@ import "./map.css"
 import { Container } from 'react-bootstrap'
 import SimpleMap from '../../GoogleMap'
 
-function Map() {
+function Map({community}) {
   return (
     <>
     <Container>
-        <div className='cards-heading'>
-          <h1>Arabian Ranches III Area Guide</h1>
-          <p>Welcome to our Arabian Ranches III Area Guide, your essential companion to discovering this
+        <div id="AreaGuide" className='cards-heading'>
+          <h1>{community}</h1>
+          {/* <p>Welcome to our {community} Area Guide, your essential companion to discovering this
             flourishing community. Gain insights into the lifestyle, amenities, and everything you need to
-            know about living in this remarkable neighborhood.</p>
+            know about living in this remarkable neighborhood.</p> */}
         </div>
         <div className='map'>
           <SimpleMap />

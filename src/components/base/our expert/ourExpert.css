@@ -13,7 +13,8 @@
 .main-expert-section{
     display: flex;
     gap: 35px;
-        margin-bottom: 50px;
+    margin-bottom: 15px;
+    margin-top: 60px;
 }
 .content-expert-section h1{
       padding: 0px 0px;
@@ -40,6 +41,14 @@
     padding: 5px 9px;
 }
 
+.whatsapp-expert{    
+    height: 41px;
+    margin-top: 50px;
+    border-radius: 8px;
+    border: none;
+    background: #5fff5f;
+}
+
 @media screen and (max-width: 995px){
 .main-expert-section{
     display: block;
@@ -55,6 +64,18 @@
 }
 .buttons-flex{
     display:"block"
+}
+}
+@media screen and (max-width: 450px){
+.content-expert-section h1 {
+    padding: 0px 0px;
+    color: #0071a4;
+    font-weight: 600;
+    font-family: 'Mont-Regular';
+    text-align: left;
+    font-size: 23px;
+    margin-top: 30px;
+    margin-bottom: 0px;
 }
 }
 

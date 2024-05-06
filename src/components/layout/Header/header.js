@@ -4,6 +4,8 @@ import paymentPlan from "../../../assets/images/payment_grey.svg"
 import startingPrice from "../../../assets/images/price_grey.svg"
 import image1 from "../../../assets/images/1.jpg"
 import image3 from "../../../assets/images/3.jpg"
+// import requast from '../assets/images/Button-01.svg'
+// import salwlogo from '../assets/images/salwa-inverted-logo.png' 
 import "../../base/carousel/banner.css";
 import {
   faArrowRight,
@@ -13,28 +15,66 @@ import {
 import SideMenue from '../Side-Menue/SideMenue';
 import MyVerticallyCenteredModal from "../../base/search Filter/MyVerticallyCenteredModal";
 import { Button } from "react-bootstrap";
+import axios from "axios";
+import { Link } from "react-router-dom";
+import Popup1 from "../../Popup1";
+import Popup2 from "../../base/Popup2";
 
 
- const items = [
-    {
-      backgroundImage: image1,
-      heading: "Luxury 3 & 4 BR Townhouses in Emaar",
-      headingContinue: " Arabian Ranches III",
-      content: " May in Arabian Ranches III is one of the most recent projects by Emaar Properties, and will be the last community in the area.",
-    },
-    {
-      backgroundImage: image3,
-     heading: "Emaar Bilss 2 - Spacious 3 & 4BR Townhouses",
-      headingContinue: " Arabian Ranches III",
-      content: "Latest development by the award-winning developer Emaar Properties, located in the self-sustaining gated community of Arabian Ranches III.",
-    },
-    // Add more items as needed
-  ];
+
+
 
 function Header() {
   const [currentSlide, setCurrentSlide] = useState(0);
-  
+    const [bannerData, setBannerData] = useState();
 
+// api integration
+  const CurrentDomain = localStorage.getItem("DOMAIN")  
+  useEffect (()=>{
+    // Fetch data using Axios
+    axios.get(`https://salwaproperties.com/community_web/api/index/${CurrentDomain}?X-API-KEY=3064c564d11154da943a1fd968822b6c`)
+      .then(response => {
+        // Assuming data is an array of objects containing necessary fields like price, subTitle, title, etc.
+        setBannerData(response.data);
+      })
+      .catch(error => {
+        console.error('Error fetching data:', error);
+      });
+  }, [CurrentDomain]);
+
+
+
+// 
+
+ const items = [
+    {
+      backgroundImage: bannerData?.desktop_cover_image,
+      heading: bannerData?.slider_heading1,
+      headingContinue:  bannerData?.community_name,
+      content: bannerData?.slider_tagline,
+      price: bannerData?.slider_price,
+      paymentPlan: bannerData?.slider_payment_plan,
+      link: bannerData?.slider_button_link,
+    },
+    {
+      backgroundImage: bannerData?.desktop_cover_image2,
+      heading: bannerData?.slider_heading2,
+      content: bannerData?.slider_tagline2,
+      price: bannerData?.slider_price2,
+      paymentPlan: bannerData?.slider_payment_plan2,
+      link: bannerData?.slider_button_link2,
+
+    },
+      {
+      backgroundImage: bannerData?.desktop_cover_image3,
+      heading: bannerData?.slider_heading3,
+      content:bannerData?.slider_tagline3,
+      price: bannerData?.slider_price3,
+      paymentPlan: bannerData?.slider_payment_plan3,
+      link: bannerData?.slider_button_link3,
+    },
+    // Add more items as needed
+  ];
   const nextSlide = () => {
     setCurrentSlide((prevSlide) =>
       prevSlide === items.length - 1 ? 0 : prevSlide + 1
@@ -48,18 +88,14 @@ function Header() {
     );
   };
 
+
   return (
     <>
             <div className="first-section">
-   
-
-
-
-              {/*  */}
                     <div className="content">   
         <div className="banner">
              
-      {items.map((item, index) => (
+      {items?.map((item, index) => (
         <div
           key={index}
           className={`slide ${index === currentSlide ? "active" : ""}`}
@@ -78,21 +114,21 @@ function Header() {
         onClick={prevSlide}
      />
 
-                        <div className="row-1">
+                        {/* <div className="row-1">
              <div className='menue-main'>
                 <div className='menue-item'>
                     <ul className='menue-ul'>
-                        <li>New Projects</li>
-                        <li>For Sale</li>
-                        <li>Area Guide</li>
-                        <li>Life Style</li>
-                        <li>Find Agents</li>
+                       <Link to="/projects" className='fake-menu'><li>New Projects</li></Link>
+                        <Link to={`/${CurrentDomain}/listing`} className='fake-menu'><li>For Buy</li></Link>
+                       <a href="#AreaGuide" className='fake-menu'><li>Area Guide</li></a>
+                       <a href={`/${CurrentDomain}#LifeStyle`} className='fake-menu'><li>Life Style</li></a>
+                        <Link to="/Agent" className='fake-menu'><li>Find Agents</li></Link>
                     </ul>
                 </div>
              </div>
-            </div>
+            </div> */}
             <div className="row-2">
-              <p>{item.heading}<br></br>{item.headingContinue}</p>
+              <p>{item.heading}</p>
             </div>
             <div className="row-3">
               <p>
@@ -105,20 +141,21 @@ function Header() {
                     <img src={startingPrice} />
                 </div>
                <div>
-                    <p className="AED-content">AED 11,000,000</p>
+                    <p className="AED-content">{item?.price ? item?.price : "Ask for Price"}</p>
                     <p>STARTING PRICE</p>
                 </div>
               </div>
 
               <div className="End-price">
                 <img src={paymentPlan} />
-                <p className="END-content">Easy 60/40</p>
+                <p className="END-content">Easy {item?.paymentPlan}</p>
                 <p>PAYMENT PLAN</p>
               </div>
             </div>
             <div className="row-5" style={{ marginRight: "0px" }}>
-            <button onClick={"toggleModal3"} className='header-Discover-New'>Discover New Projects <FontAwesomeIcon icon={faArrowRight} /></button>
-            <button className='header-Get-info'>Get More Info</button>
+            <Link to={item?.link} > <button className='header-Discover-New'>Discover New Projects <FontAwesomeIcon icon={faArrowRight} /></button></Link>
+            {/* <button className='header-Get-info'>Get More Info</button> */}
+            <Popup1 text="Get More Info"/>
             </div>
             
             <FontAwesomeIcon icon={faForward}  

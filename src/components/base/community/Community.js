@@ -1,16 +1,37 @@
-import React from 'react'
+import React, { useState } from 'react'
 
-function Community() {
+function Community({ObjectForContent}) {
+  const [content, setContent] = useState(true);
+
+  const hideContent= () =>{
+    setContent(!content)
+  }
+
+  const truncateContent = (content, wordCount) => {
+  if (!content) return ''; // Handle case where content is undefined or null
+  
+  const words = content.split(' ');
+  const truncatedWords = words.slice(0, wordCount);
+  const truncatedContent = truncatedWords.join(' ');
+  
+  return truncatedContent;
+};
+
   return (
        <div className='community-content'>
-          <h1>Arabian Ranches III Community</h1>
+          {/* <h1>{ObjectForContent?.community} Community</h1> */}
           <p>
-             A luxurious area in Dubai, United Arab Emirates, is called Arabian Ranches. Arabian Ranches is renowned for its lavish and
-family-friendly living environment and created by Emaar Properties, one of the top real estate developers in the United Arab
-Emirates. It provides a distinctive fusion of conventional Arabian architectural styles with cutting-edge conveniences and
-lusciously green surroundings. We shall examine Arabian Ranches in depth in this article, including their background,
+            {content && <div dangerouslySetInnerHTML={{ __html: ObjectForContent?.content?.slice(0, 2000) }}/>}
+
+            <p className={`content${content ? "hide" : "show"}`}>
+             <div dangerouslySetInnerHTML={{ __html: ObjectForContent?.content }}/>
             </p>
-            <p>Read more</p>
+
+                        </p>
+            <div>
+            <button className='bttn-read-more-community' onClick={hideContent}>{content ? "Read more" : "Read Less"}</button>
+            <p></p>
+            </div>
         </div>
   )
 }

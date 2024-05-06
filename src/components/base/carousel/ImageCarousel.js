@@ -2,18 +2,19 @@ import React from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { faArrowUp } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import SwiperCore, {
-  Navigation,
-  Autoplay,
-  Pagination,
-  Keyboard,
-} from "swiper/core";
-import "swiper/swiper-bundle.min.css";
+// import SwiperCore, {
+//   Navigation,
+//   Autoplay,
+//   Pagination,
+//   Keyboard,
+// } from "swiper/core";
+// import "swiper/swiper-bundle.min.css";
+// import 'swiper/swiper-bundle.min.css';
 import LUX from "../../../assets/images/imageCarousel1.png"
 import LUX2 from "../../../assets/images/imageCarousel2.png"
 import LUX3 from "../../../assets/images/imageCarousel3.png"
 import "./ImageCard.css"
-SwiperCore.use([Navigation, Autoplay, Pagination, Keyboard]);
+// SwiperCore.use([Navigation, Autoplay, Pagination, Keyboard]);
 
 function  Crousel() {
   const swiperOptions = {
@@ -23,10 +24,10 @@ function  Crousel() {
     //   el: ".swiper-pagination",
     //   clickable: true,
     // },
-    navigation: {
-      nextEl: ".swiper-next",
-      prevEl: ".swiper-prev",
-    },
+    // navigation: {
+    //   nextEl: ".swiper-next",
+    //   prevEl: ".swiper-prev",
+    // },
     mousewheel: false,
     keyboard: true,
     autoplay: {
@@ -100,22 +101,21 @@ function  Crousel() {
     <>
     
       <div className="swiper-buttons">
-        <button className="swiper-prev" style={{color:"black"}}>
+        {/* <button className="swiper-prev" style={{color:"black"}}>
           {" "}
           <FontAwesomeIcon icon={faArrowUp} className='footer-button-arrow' style={{rotate:"295deg"}} />  Previous
         </button>
         <button className="swiper-next" style={{color:"black"}}>
           {" "}
          Next <FontAwesomeIcon icon={faArrowUp} className='footer-button-arrow' style={{rotate:"45deg"}}/>
-        </button>
+        </button> */}
       </div>
       <Swiper {...swiperOptions} className="swiper-wrapper-Award swiper-wrapper">
      
         {data.map((property, index) => (
          <SwiperSlide>
         <div key={index} className="card-img">
-          <img src={property.image} alt="Avatar" style={{ width: "100%" }} />
-
+          <img src={property.image} alt="Avatar" className="img-carousel" style={{ width: "100%" }} />
             </div>
         </SwiperSlide>
 

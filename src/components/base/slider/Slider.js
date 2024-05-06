@@ -9,10 +9,9 @@ import "./slider.css"
 
 
 // Install Swiper modules
-SwiperCore.use([Navigation, Pagination, Autoplay]);
+// SwiperCore.use([Navigation, Pagination, Autoplay]);
 
 const CenteredSlider = ({Exterior}) => {
-    console.log(Exterior, "<------- exterior here")
     const images = Exterior?.GallInt;
   return (
     <Swiper

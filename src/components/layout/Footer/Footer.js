@@ -8,9 +8,9 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 // import whatsapp from "../assets/images/whatsapp-ar21.svg"
 // import sirr from "../assets/images/sirr.png"
 import { Link } from 'react-router-dom';
+import PopupCards from '../../base/PopupCards';
 
-function Footer( prop ) {
-    console.log(prop.active , "---------------");
+function Footer( {community} ) {
     const handleScrollTop = () => {
         window.scrollTo({
       top: 0,
@@ -37,7 +37,7 @@ function Footer( prop ) {
                           <div className='footerMid-row-1'>
                               <h1>Projects</h1>
                               <ul>
-                                  <li>Emmar property for sale in Arabian ranches</li>
+                                  <li>Emmar property for sale in {community}</li>
                                   <li>Viewz By DANUBES</li>
                                   <li>SOBAH ONE</li>
                                   <li>VIEW ALL <FontAwesomeIcon icon={faArrowUp} className='footer-button-arrow'/></li>
@@ -63,7 +63,13 @@ function Footer( prop ) {
                                   <li>LUX@PROPERTY.COM</li>
                               </ul>
                               <h4 className='footer-row4-h4'>keep yourself upto date.</h4>
+                              {/* <button className='footer-row4-btn'>YOUR MAIL <span className='footer-span-for-padding'> </span> SUBSCRIBE</button> */}
+                           <PopupCards 
+                           text={
                               <button className='footer-row4-btn'>YOUR MAIL <span className='footer-span-for-padding'> </span> SUBSCRIBE</button>
+                           }
+                    />
+                          
                           </div>
                       </div>
                       <div className='basic-footer-midLower'>

@@ -9,23 +9,30 @@ import "./slider.css"
 
 
 // Install Swiper modules
-SwiperCore.use([Navigation, Pagination, Autoplay]);
+// SwiperCore.use([Navigation, Pagination, Autoplay]);
 
 const InteriorSliderDetail = ({Interior}) => {
-    console.log(Interior, "<------- exterior here")
+
     const images = Interior?.GallInt;
   return (
-    <Swiper
+      <Swiper
       spaceBetween={30}
-      slidesPerView={2}
-    //   centeredSlides={true}
       loop={true} 
       autoplay={{
         delay: 2500,
-        disableOnInteraction: false
+        disableOnInteraction: true
       }}
-      navigation
-      // pagination={{ clickable: true }}
+      breakpoints={{
+        // When window width is >= 500px
+        500: {
+          slidesPerView: 1
+        },
+        // When window width is >= 768px
+        768: {
+          slidesPerView: 2
+        }
+      }}
+      Pagination={{ clickable: true }}
     >
       {images?.map((image, index) => (
         <SwiperSlide key={index}>

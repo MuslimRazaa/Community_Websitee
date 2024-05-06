@@ -88,6 +88,9 @@ p.footer-whatsapp-text {
     color: #f78e65;
     float: right;
 }
+.circle-up:hover{
+    cursor: pointer;
+}
 .footer-form-content h1{
     padding: 40px 10px 0px 10px;
     font-size: 50px;

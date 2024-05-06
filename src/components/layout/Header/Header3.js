@@ -13,6 +13,8 @@ import {
 import SideMenue from '../Side-Menue/SideMenue';
 import MyVerticallyCenteredModal from "../../base/search Filter/MyVerticallyCenteredModal";
 import { Button } from "react-bootstrap";
+import PopupProjects from "../../base/PopupProjects";
+import { Link } from "react-router-dom";
 
 
  const items = [
@@ -82,8 +84,9 @@ function Header() {
               </div>
             </div>
             <div className="row-5" style={{ marginRight: "0px" }}>
-            <button onClick={"toggleModal3"} className='header-Discover-New'>Discover New Projects <FontAwesomeIcon icon={faArrowRight} /></button>
-            <button className='header-Get-info'>Get More Info</button>
+           <Link to="https://arabianranches.community/projects/may-townhouses"> <button onClick={"toggleModal3"} className='header-Discover-New'>Discover New Projects <FontAwesomeIcon icon={faArrowRight} /></button> </Link>
+            {/* <button className='header-Get-info'>Get More Info</button> */}
+            <PopupProjects text="Get More Info"/>
             </div>
             
           </div>

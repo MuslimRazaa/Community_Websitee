@@ -2,20 +2,20 @@ import React from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { faArrowUp } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import SwiperCore, {
-  Navigation,
-  Autoplay,
-  Pagination,
-  Keyboard,
-} from "swiper/core";
-import "swiper/swiper-bundle.min.css";
+// import SwiperCore, {
+//   Navigation,
+//   Autoplay,
+//   Pagination,
+//   Keyboard,
+// } from "swiper/core";
+// import "swiper/swiper-bundle.min.css";
 import LUX from "../../../assets/images/nearby6.png"
 import LUX2 from "../../../assets/images/nearby3.png"
 import "react-responsive-carousel/lib/styles/carousel.min.css"; 
 import { Carousel } from 'react-responsive-carousel';
 import LUX3 from "../../../assets/images/nearby1.png"
 // import "../imageCard.css"
-SwiperCore.use([Navigation, Autoplay, Pagination, Keyboard]);
+// SwiperCore.use([Navigation, Autoplay, Pagination, Keyboard]);
 
 function DetCrousel() {
   const swiperOptions = {

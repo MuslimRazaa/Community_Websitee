@@ -40,6 +40,13 @@ function Subscribe() {
                       </div>
                       <div>
                         <input
+                          type="number"
+                          placeholder="ENTER NUMBER"
+                          className="ninth-input-email"
+                        />
+                      </div>
+                      <div>
+                        <input
                           type="email"
                           placeholder="ENTER EMAIL"
                           className="ninth-input-email"

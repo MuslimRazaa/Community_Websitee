@@ -21,7 +21,6 @@ function ProdCardTown() {
         console.error('Error fetching data:', error);
       });
   }, []);
-        console.log(cardData, "card data")
 
   return (
 <div className='card-flex'>

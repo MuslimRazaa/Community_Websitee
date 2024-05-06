@@ -2,41 +2,31 @@ import React, { useEffect, useState } from 'react'
 import Header from '../../components/layout/Header/header'
 import Card from '../../components/base/card/card'
 import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
-import nearby1 from "../../assets/images/nearby1.png"
-import nearby3 from "../../assets/images/nearby3.png"
-import nearby4 from "../../assets/images/nearby4.png"
-import nearby5 from "../../assets/images/nearby5.png"
-import nearby6 from "../../assets/images/nearby6.png"
 import { Container, Form } from 'react-bootstrap';
 import Map from '../../components/base/map/Map';
 import Subscribe from '../../components/base/subscribe now/Subscribe';
 import ImageCrousel from '../../components/base/carousel/ImageCarousel';
-import CardArticles from '../../components/base/card/CardArticles';
 import FAQ from '../../components/base/FAQ/Faq';
-import Amenities from '../../components/base/amenities/Amenities';
 import Community from '../../components/base/community/Community';
 import Expert from '../../components/base/our expert/Expert';
-import MyButton from '../../components/layout/button/button';
-import Button from 'react-bootstrap/Button';
 import Quiz from '../../components/base/Quiz/Quiz';
 import Footer from '../../components/layout/Footer/Footer';
-import DetCrousel from '../../components/base/carousel/detCrousel';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faArrowUp, faEnvelope, faGears, faMagnifyingGlass, faPhone, faSliders, faSlidersH } from '@fortawesome/free-solid-svg-icons';
-import MyVerticallyCenteredModal from '../../components/base/search Filter/MyVerticallyCenteredModal';
-import { useParams } from 'react-router-dom';
-import CenteredSlider from '../../components/base/slider/Slider';
-import ProdCardVillas from '../../components/base/card/ProdCardVillas';
-import ProdCardTown from '../../components/base/card/ProdCardTown';
+import { faArrowUp, faEnvelope, faPhone } from '@fortawesome/free-solid-svg-icons';
+import { Link } from 'react-router-dom';
 import ProdCardApart from '../../components/base/card/ProdCardApart';
 import ListCardAppart from '../../components/base/card/ListCardAppart';
-import ListCardTown from '../../components/base/card/ListCardTown';
-import ListCardVillas from '../../components/base/card/ListCardVillas';
-import { setSelectionRange } from '@testing-library/user-event/dist/utils';
 import axios from 'axios';
+import AmenitiesHome from '../../components/base/amenities/AmenitiesHome';
+import InteriorSliderHome from '../../components/base/slider/InteriorSliderHome';
+import ExteriorSliderHome from '../../components/base/slider/ExteriorSliderHome';
+import SubFooter from '../../components/layout/sub-footer/SubFooter';
+import ListingCards from '../../components/base/card/ListingCards';
+
 
 function Home() {
   const [selectedOption1, setSelectedOption1] = useState('property');
+    const [listingProjects, setListingProjects] = useState();
   const [selectedOption2, setSelectedOption2] = useState('price_range');
   const [selectedOption3, setSelectedOption3] = useState('all_bedrooms');
   const [activeCity, setActiveCity] = useState('Appartments');
@@ -46,6 +36,7 @@ function Home() {
     const [searchValue, setSearchValue] = useState('');
  const [domain, setDomain] = useState('');
   const [firstParameter, setFirstParameter] = useState('');
+  const [bannerData, setBannerData] = useState();
 
   const openCity = (cityName) => {
     setActiveCity(cityName);
@@ -70,7 +61,13 @@ const handleSearchChange = (event) => {
   const handleChange3 = (event) => {
     setSelectedOption3(event.target.value);
   };
+   
+   
+//      useEffect(() => {
+//  window.scrollTo(0, 0);
+//    }, []);
 
+   
    useEffect(() => {
     // Get the domain
     const currentDomain = window.location.hostname;
@@ -89,6 +86,38 @@ const handleSearchChange = (event) => {
   else{
      localStorage.setItem('DOMAIN', domain);
   }
+  const CurrentDomain = localStorage.getItem("DOMAIN")  
+  useEffect (()=>{
+    // Fetch data using Axios
+    axios.get(`https://salwaproperties.com/community_web/api/index/${CurrentDomain}?X-API-KEY=3064c564d11154da943a1fd968822b6c`)
+      .then(response => {
+        // Assuming data is an array of objects containing necessary fields like price, subTitle, title, etc.
+        setBannerData(response.data);
+         localStorage.setItem('slug', response?.data?.community_slug);
+      })
+      .catch(error => {
+        console.error('Error fetching data:', error);
+      });
+  }, [CurrentDomain]);
+
+console.log(bannerData, "banertdaeraa")
+
+   useEffect(() => {
+    axios.get(`https://salwaproperties.com/community_web/api/listing/${CurrentDomain}?X-API-KEY=3064c564d11154da943a1fd968822b6c`)
+      .then(response => {
+        setListingProjects(response?.data);
+      })
+      .catch(error => {
+        console.error('Error fetching data:', error);
+      });
+  }, [CurrentDomain]);
+  
+
+console.log(bannerData, "bannerData-------------")
+const ObjectForContent = {
+  content: bannerData?.homepage_content ? bannerData?.homepage_content : "Lorem ipsum",
+  community: bannerData?.community_name,
+}
 
 
 
@@ -99,95 +128,29 @@ const handleSearchChange = (event) => {
 
     <Container>
       <div className='cards-main-slider'>
-        <div className='cards-heading'>
-          <h1>Offplan Projects in Arabian Ranches III</h1>
-          <p>see all the latest investment attractive new properties for sale in Arabian Ranches 3</p>
-        </div>
-
-
-        <div className='outer-bg-menue'>
-        <div className='menue-bar'>
-          <div>
-          <div className='menue-parrent'>
-              <p  className='menue-box-keyword' >KEYWORDS</p>
-            <div>
-                <select id="dropdown1" value={selectedOption1} onChange={handleChange1}  className='menue-boxes'>
-                  <option value="property" style={{color:"black"}}>PROPERTY</option>
-                  <option value="price_range" style={{color:"black"}}>choice1</option>
-                  <option value="all_bedrooms" style={{color:"black"}}>choice2</option>
-                </select>
-              </div>
-              <div>
-
-                <select id="dropdown2" value={selectedOption2} onChange={handleChange2}  className='menue-boxes'>
-                  <option value="option1" style={{color:"black"}}>PRICE RANGE</option>
-                  <option value="option2" style={{color:"black"}}>Option 2</option>
-                  <option value="option3" style={{color:"black"}}>Option 3</option>
-                </select>
-              </div>
-              <div>
-                <select id="dropdown3" value={selectedOption3} onChange={handleChange3} className='menue-boxes'>
-                  <option value="choice1" style={{color:"black"}}>All Bedrooms</option>
-                  <option value="choice2" style={{color:"black"}}>Choice 2</option>
-                  <option value="choice3" style={{color:"black"}}>Choice 3</option>
-                </select>
-              </div>
-                <p  className='menue-box-p' >SEARCH PROPERTY</p>
-          </div>
-           </div>
-        </div>
-        </div>
-
-        <div className="modal-filter">
-
-           {/* modal */}
-      <Form.Group controlId="exampleForm.ControlInputSearch">
-            <Form.Control type="text" placeholder="Enter Key Words" value={searchValue} onChange={handleSearchChange} />
-          </Form.Group>
-          <Button className="modal-filter-btn-sm">
-            Search <FontAwesomeIcon icon={faMagnifyingGlass} />
-          </Button>
-      <Button className="modal-filter-btn"  onClick={() => setModalShow(true)}>
-       More Filter <FontAwesomeIcon icon={faSliders} />
-      </Button>
-
-      <MyVerticallyCenteredModal
-        show={modalShow}
-        onHide={() => setModalShow(false)}
-      />
-     </div>
-
       <div id="Appartments" className="w3-container city" style={{ display: activeCity === 'Appartments' ? 'block' : 'none' }}>
      <div className='card-main-wrapper'>
-                <ProdCardApart/>
-
-            {/* <ListCardTown/>
-             <ListCardVillas/> */}
+                <ProdCardApart community={bannerData?.community_name}/>
       </div>
       </div>
-    <div className='view-more-button'>
-        <button className='vm-btn'>View All Properties</button>
-    </div> 
-
-
   </div>
     </Container>
 
-    {/* card slider 2*/}
-    <Container>
+  {  <Container>
       <div className='cards-main-slider'>
         <div className='cards-heading'>
-          <h1>Popular Listing in Arabian Ranches III</h1>
-          <p>Discover Luxury Villas and townhouses for sale in Arabian Ranches III community</p>
+          <h1>Popular Listing in {bannerData?.community_name}</h1>
+          {/* <p>Discover Luxury Villas and townhouses for sale in {bannerData?.community_name} community</p> */}
         </div>
 
 
-        <div className='outer-bg-menue'>
+        {/* <div className='outer-bg-menue'>
         <div className='menue-bar'>
           <div>
           <div className='menue-parrent'>
               <p  className='menue-box-keyword' >KEYWORDS</p>
             <div>
+              
                 <select id="dropdown1" value={selectedOption1} onChange={handleChange1}  className='menue-boxes'>
                   <option value="property" style={{color:"black"}}>PROPERTY</option>
                   <option value="price_range" style={{color:"black"}}>choice1</option>
@@ -209,14 +172,16 @@ const handleSearchChange = (event) => {
                   <option value="choice3" style={{color:"black"}}>Choice 3</option>
                 </select>
               </div>
-                <p  className='menue-box-p' >SEARCH PROPERTY</p>
+                <input type='search' placeholder='search' style={{color:"white",}} className='menue-box-p' />
           </div>
            </div>
         </div>
-        </div>
-        <div className="modal-filter">
+        </div> */}
 
-           {/* modal */}
+
+
+        {/* <div className="modal-filter">
+
       <Form.Group controlId="exampleForm.ControlInputSearch">
             <Form.Control type="text" placeholder="Enter Key Words" value={searchValue} onChange={handleSearchChange} />
           </Form.Group>
@@ -231,7 +196,7 @@ const handleSearchChange = (event) => {
         show={modalShow}
         onHide={() => setModalShow(false)}
       />
-     </div>
+     </div> */}
 
       {/* <div className="w3-bar w3-black tabs-bar">
         <button className={`w3-bar-item w3-button ${activeCity === 'Appartments' ? 'w3-blue' : ''}`} onClick={() => openCity('Appartments')}>Appartments</button>
@@ -241,77 +206,44 @@ const handleSearchChange = (event) => {
 
       <div id="Appartments" className="w3-container city" style={{ display: activeCity === 'Appartments' ? 'block' : 'none' }}>
      <div className='card-main-wrapper'>
-        <ListCardAppart />
+        <ListingCards listingProjects={listingProjects} viewAll={"viewAll"} />
       </div>
       </div>
-
-      {/* <div id="TownHouse" className="w3-container city" style={{ display: activeCity === 'TownHouse' ? 'block' : 'none' }}>
-      <div className='card-main-wrapper' >
-        <ProdCardTown/>
-      </div>
-      </div>
-
-      <div id="Villas" className="w3-container city" style={{ display: activeCity === 'Villas' ? 'block' : 'none' }}>
-       <div className='card-main-wrapper' >
-        <ProdCardVillas/>
-      </div>
-      </div> */}
   </div>
-    </Container>
+    </Container>}
+
+
       {/* Map component */}
-    <Map/>
+    <Map community={bannerData?.community_name}/>
 
 
     {/* nearBy component */}
     <Container>
-       <h1 className='heading-nearby'>Features and Amenities</h1>
+       <h1 className='heading-nearby'>Nearby Places</h1>
       <div className="row" style={{marginTop: "0rem",}}>
-        <div className="col-md-6">
-          <img src={nearby1}  className="img-fluid" />
-          <p className='nearby-tag-1'>EMAAR BEACH FRONT</p>
-          <h1 className='nearby-tag-2'>BEACH MANSION</h1>
-          <p className='nearby-time'>20 Min</p>
-        </div>
-        <div className="col-md-6">
-          <img src={nearby6} alt="Image 2" className="img-fluid" />
-          <p className='nearby-tag-1'>EMAAR BEACH FRONT</p>
-          <h1 className='nearby-tag-2'>BEACH MANSION</h1>
-          <p className='nearby-time'>20 Min</p>        </div>
+      {bannerData?.nearby?.map((place, index) => (
+          <div className="col-md-6" key={index} style={{padding: "18px 15px",}}>
+            <div className='img-fluid-container'>
+              <img src={place.place_image} style={{width:"100%", height:"300px"}} className="img-fluid" alt={place.place_name} />
+            </div>
+            <p className='nearby-tag-1'>{bannerData?.community_name}</p>
+            <h1 className='nearby-tag-2'>{place.place_name}</h1>{/* Assuming this is static */}
+            <p className='nearby-time'>{place.minutes}</p>
+          </div>
+        ))}
+
       </div>
-      <div className="row" style={{marginTop: "1rem",}}>
-        <div className="col-md-6">
-          <img src={nearby3}  className="img-fluid" />
-          <p className='nearby-tag-1'>EMAAR BEACH FRONT</p>
-          <h1 className='nearby-tag-2'>BEACH MANSION</h1>
-          <p className='nearby-time'>20 Min</p>        </div>
-        <div className="col-md-6">
-          <img src={nearby4} alt="Image 2" className="img-fluid" />
-          <p className='nearby-tag-1'>EMAAR BEACH FRONT</p>
-          <h1 className='nearby-tag-2'>BEACH MANSION</h1>
-          <p className='nearby-time'>20 Min</p>        </div>
-      </div>
-       <div className="row" style={{marginTop: "1rem",}}>
-        <div className="col-md-6">
-          <img src={nearby5}  className="img-fluid" />
-          <p className='nearby-tag-1'>EMAAR BEACH FRONT</p>
-          <h1 className='nearby-tag-2'>BEACH MANSION</h1>
-          <p className='nearby-time'>20 Min</p>        </div>
-        <div className="col-md-6">
-          <img src={nearby6} alt="Image 2" className="img-fluid" />
-          <p className='nearby-tag-1'>EMAAR BEACH FRONT</p>
-          <h1 className='nearby-tag-2'>BEACH MANSION</h1>
-          <p className='nearby-time'>20 Min</p>        </div>
-      </div>
+
     </Container>
 
     {/* slider */}
-    {/* <Container>
- <div className="imagecard-container">
-             <h1>Life Style in Arabian Ranches III community</h1>
-            <p>
+    <Container>
+        <div id='LifeStyle' className="imagecard-container">
+             <h1>Life Style in {bannerData?.community_name} community</h1>
+            {/* <p>
              Choose a property in premium areas. All options are with finishing. You can find a quiet life in a villa on an
               island surrounded by the endless sea, or the rhythmic business life of skyscrapers in the center of Dubai.
-            </p>
+            </p> */}
 </div>
     <div className="w3-bar w3-black tabs-bar">
             <button className={`w3-bar-item w3-button ${activeCityB === 'Int' ? 'w3-blue' : ''}`} onClick={() => openCityB('Int')}>Interior</button>
@@ -322,8 +254,8 @@ const handleSearchChange = (event) => {
         <div className='card-main-wrapper'>
       <div style={{
         position:"relative"
-      }}>|
-          <CenteredSlider/>
+      }}>
+          <InteriorSliderHome Interior={bannerData?.interior_gallery}/>
       </div>
 
           </div>
@@ -334,18 +266,18 @@ const handleSearchChange = (event) => {
         
       <div style={{
         position:"relative"
-      }}>|
-          <CenteredSlider/>
+      }}>
+          <ExteriorSliderHome Exterior={bannerData?.exterior_gallery}/>
       </div>
 
           </div>
           </div>
-    </Container> */}
+    </Container>
     
     {/* amenities */}
-    {/* <Container>
-      <Amenities/>
-    </Container> */}
+    <Container>
+    {bannerData?.amenities?.length === 0 ? "" : <AmenitiesHome amenitiesObj={bannerData?.amenities}/>}
+    </Container>
 
     <Container>
       <Quiz/>
@@ -359,10 +291,10 @@ const handleSearchChange = (event) => {
       <div className="third-section">
           <div className="imagecard-container">
              <h1>More Than In Dubai Popular Areas</h1>
-            <p>
+            {/* <p>
              Choose a property in premium areas. All options are with finishing. You can find a quiet life in a villa on an
               island surrounded by the endless sea, or the rhythmic business life of skyscrapers in the center of Dubai.
-            </p>
+            </p> */}
             <div className="img-card-wrapper">
               <ImageCrousel />
             </div>
@@ -371,7 +303,7 @@ const handleSearchChange = (event) => {
 
     </Container>
 
-    <Container>
+    {/* <Container>
       <div className='recent-articles'>
         <div className='recent-articles-content'>
           <h1>Recent Articles</h1>
@@ -385,20 +317,25 @@ const handleSearchChange = (event) => {
           <CardArticles/>
         </div>
       </div>
+    </Container> */}
+
+    <Container>
+      {bannerData?.faqs?.length === 0 ? ""  : <FAQ faqData={bannerData?.faqs}/>}
+      
     </Container>
 
     <Container>
-      <FAQ/>
-    </Container>
-
-    <Container>
-      <Community/>
+      <Community ObjectForContent={ObjectForContent}/>
     </Container>
 
     <Container>
       <Expert/>
     </Container>
-      <Footer/>    
+    <br></br>
+    <Container>
+      <SubFooter/>
+    </Container>
+      <Footer  community={bannerData?.community_name}/>    
 
 
 <div className='mobile-navigation-menu'>
@@ -411,10 +348,10 @@ const handleSearchChange = (event) => {
     </div>
   </div>
   <div className='mobile-nav-icons'>
-  
-  <h1 style={{
+
+   <Link to={"https://api.whatsapp.com/send/?phone=971524474422&amp;text=Hi+There%2C+How+can+I+buy,+sell,+or+rent+a+residence+in+Dubai?.+Kindly+send+me+more+information.+Thank+you%21+http://localhost/uae-offplan.com/&amp;type=phone_number&amp;app_absent=0"} style={{textDecoration: "none",}} ><h1 style={{
     fontSize: "23px",
-    color: "#2abd2a",}}> <FontAwesomeIcon icon={faPhone} /> Whatsapp</h1>
+    color: "#2abd2a",}}> <FontAwesomeIcon icon={faPhone} /> Whatsapp</h1></Link> 
   <FontAwesomeIcon icon={faEnvelope} style={{    fontSize: "28px",
     marginLeft: "66px",}} />
   <FontAwesomeIcon icon={faArrowUp} style={{    fontSize: "28px",

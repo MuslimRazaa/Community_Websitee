@@ -39,7 +39,6 @@ function MyVerticallyCenteredModal(props) {
     // Handle submission logic here
     // You can access all input values: selectedOption, searchValue, input1Value, input2Value, input3Value, input4Value
     // For example:
-    console.log(selectedOption, searchValue, input1Value, input2Value, input3Value, input4Value);
     // Close the modal after handling submission
     props.onHide();
   };

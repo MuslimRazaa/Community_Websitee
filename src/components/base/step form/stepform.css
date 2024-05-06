@@ -1,0 +1,103 @@
+.main-box{
+    width: 55%;
+    margin: auto;
+    padding: 50px;
+    background-color: white;
+    margin-top: 4rem;
+    margin-bottom: 3rem;
+    border: 1px solid #808080e0;
+    text-align: center;
+    border-radius: 10px;
+    height: 300px;
+}
+.step-form-heading{
+        color: darkslategrey;
+    font-family: 'Mont-Regular';
+    font-size: 45px;
+}
+.next-btn{
+    border: none;
+    background: #dcdcff;
+    width: 150px;
+    height: 33px;
+    border-radius: 10px;
+}
+.selected-icon {
+  color: red; /* Change to your desired color */
+}
+.bed-box {
+  display: flex;
+  width: 145px;
+  border: 1px solid;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.bed-box.selected {
+  background-color: lightblue; /* Change to your desired color */
+}
+
+.bed-box:hover {
+  transform: scale(1.1);
+}
+
+.bed-icon {
+  height: 30px;
+  width: 30px;
+  margin: 5px;
+}
+
+.heading-subtitle{
+    font-size: 19px;
+    margin: 8px;
+        font-family: 'Mont-Regular';
+
+}
+svg.svg-inline--fa.fa-hand-holding-dollar, svg.svg-inline--fa.fa-house, svg.svg-inline--fa.fa-key {
+    font-size: 60px;
+    margin: 25px 40px;
+}
+
+svg.svg-inline--fa.fa-hand-holding-dollar:hover, svg.svg-inline--fa.fa-house:hover, svg.svg-inline--fa.fa-key:hover {
+    color: rgb(163, 192, 192);
+}
+
+.input-feild {
+    width: 300px;
+    margin: 5px;
+    padding: 5px;
+    border-radius: 3px;
+    border: none;
+    border: 1px solid;
+}
+
+.prev-btn{
+    border: none;
+    background: none;
+}
+
+
+@media screen and (max-width: 768px){
+.main-box {
+    width: 99%;
+    margin: auto;
+    padding: 50px 0px;
+    background-color: white;
+    margin-top: 2rem;
+    margin-bottom: 3rem;
+    border: 1px solid #808080e0;
+    text-align: center;
+    border-radius: 10px;
+    height: 300px;
+}
+.step-form-heading{
+        color: darkslategrey;
+    font-family: 'Mont-Regular';
+    font-size: 35px;
+}
+svg.svg-inline--fa.fa-hand-holding-dollar, svg.svg-inline--fa.fa-house, svg.svg-inline--fa.fa-key {
+    font-size: 60px;
+    margin: 15px 20px;
+}
+}

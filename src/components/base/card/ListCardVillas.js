@@ -131,7 +131,6 @@ function ListCardVillas() {
         console.error('Error fetching data:', error);
       });
   }, []);
-        console.log(cardData, "card data")
 
   return (
       <div className='card-flex'>
@@ -158,7 +157,8 @@ function ListCardVillas() {
                 <p style={{ width: "140px" }}><img src={sq} width={"30px"} /> {card.size}</p>
               </div>
               <div>
-                <img src={enquire} style={{ width: "189px" }} alt="Enquire" />
+                <button className='enquire'>Enquire Now</button>
+                {/* <img src={enquire} style={{ width: "189px" }} alt="Enquire" /> */}
                 <FontAwesomeIcon icon={faEnvelope} style={{ fontSize: "28px", marginLeft: "33px" }} />
               </div>
             </div>

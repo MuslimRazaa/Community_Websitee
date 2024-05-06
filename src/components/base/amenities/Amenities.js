@@ -6,9 +6,10 @@ import icon4 from "../../../assets/images/grill-bbq-svgrepo-com.svg"
 
 function Amenities({amenitiesObj}) {
   const data = amenitiesObj?.amenities;
-    console.log(data, "amenities here")
 
-  return (
+
+  return (  
+    
      <div className='features-section'>
         <h1 className='heading-amenities'>Features and Amenities</h1>
         <div className='amenities-icons'>

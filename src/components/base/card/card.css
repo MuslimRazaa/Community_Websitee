@@ -35,20 +35,60 @@
     flex-wrap: wrap;
     gap: 50px;
 }
+.card-flex-filter
+  {
+    display: flex;
+      justify-content: center;
+    flex-wrap: wrap;
+    gap: 50px;
+    margin-top: 4rem;
+}
 
+.enquire {
+      background: linear-gradient(45deg, #d0e4f7 0%, #ed7b22 0%, #ef8516 30%, #ef8516 41%, #f29407 55%, #f29407 100%, #f29407 100%);
+    border: none;
+    width: 100%;
+    height: 35px;
+    font-size: 15px;
+    padding: 2px 4px;
+    border-radius: 7px;
+    color: white;
+    font-family: 'Mont-Regular';
+}
+.circle-image{
+  background-image: url("../../../assets/images/Pop-Up-Salwa-01.png");
+  background-position: center;
+  background-size: cover;
+    width: 35px;
+    height: 33px;
+        margin-left: 9px;
+  border-radius: 50%;
+  background-color: #0071a4;
+  display: inline-block;
+  float: right;
+}
+.image-hover-div{
+    position: relative;
+    overflow: hidden;
+}
 .card-img-top {
   width: 100%;
   height: 200px;
   object-fit: cover;
   position: relative;
+  transition: transform 0.3s ease;
+}
+.card-img-top:hover {
+  transform: scale(1.1);
 }
 .payment-tag{
-    background-color: #0071a4;
+     background-color: #0071a4;
     position: absolute;
-    padding: 5px 18px;
-    margin: 15px;
-        border-radius: 6px;
-  
+    padding: 2px 14px;
+    margin: 23px 16px;
+    border-radius: 6px;
+    color: white;
+    font-size: 13px;
 }
 .featured-tag{
     color: #000;
@@ -66,7 +106,7 @@
     color: #000;
     background-color: #ffffff;
     position: absolute;
-    top: 9rem;
+    top: 13rem;
     font-weight: 700;
     font-size: 13px;
     padding: 1px 18px;
@@ -75,30 +115,69 @@
   
 }
 
+a {
+  text-decoration: none;
+}
+
 .card-body {
     padding: 0px 8px 2px 8px;
         text-align: left;
 
 }
-
+.list-card-title{
+      font-size: 24px;
+    font-weight: 600;
+    margin: 0px;
+    margin: 8px 0px 2px 0px;
+    color: #000000;
+    font-family: revert;
+}
 .card-title {
     font-size: 31px;
     font-weight: 600;
     margin: 0px;
     margin: 8px 0px 2px 0px;
-    color: #b9b8b8;
+    color: #000000;
     font-family: revert;
 }
 .card-sub-title{
       font-size: 12px;
 }
+.list-card-sub-title{
+      font-size: 14px;
+      color: #007bff;
+      margin: 10 0pxpx;
+      font-weight: 500;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+}
+.list-card-community{
+      font-size: 14px;
+      margin: 0px;
+}
+.list-card-icon-flex{
+  display: flex;
+}
 .card-text {
-    margin-top: 13px;
-    font-size: 18px;
+    /* margin-top: 13px; */
+    margin: 5px;
+    font-size: 20px;
+    color: #000;
+    font-family: 'Mont-Regular';
+    font-weight: 600;
+    }
+.list-card-text {
+    margin: 10 0pxpx;
+    font-size: 14px;
     color: #000;
     font-family: 'Mont-Regular';
     font-weight: 100;
-    }
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
 
 .card-footer {
   background-color: #f8f9fa;
@@ -351,7 +430,7 @@ font-weight: 100;
 }
 @media screen and (max-width: 768px) {
 .card {
-    width: 100%;
+    width: 94%;
     border: 1px solid #ccc;
     overflow: hidden;
     margin-bottom: 20px;
@@ -371,5 +450,35 @@ font-weight: 100;
     background-color: #e7dddd6e;
     margin-bottom: 20px;
     box-shadow: 0px -3px 10px -3px grey;
+}
+.card-flex-filter
+  {
+    display: flex;
+      justify-content: center;
+    flex-wrap: wrap;
+    gap: 50px;
+    margin-top: 3rem;
+}
+}
+@media screen and (max-width: 450px) {
+.payment-tag {
+    background-color: #0071a4;
+    position: absolute;
+    padding: 2px 14px;
+    margin: 23px 16px;
+    border-radius: 6px;
+    color: white;
+    font-size: 13px;
+}
+.appart-tag {
+    color: #000;
+    background-color: #ffffff;
+    position: absolute;
+    top: 15rem;
+    font-weight: 700;
+    font-size: 13px;
+    padding: 1px 18px;
+    margin: 17px 18px;
+    border-radius: 6px;
 }
 }

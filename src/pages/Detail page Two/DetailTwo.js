@@ -2,36 +2,26 @@ import React, { useEffect, useState } from 'react'
 import Header3 from '../../components/layout/Header/Header3'
 import Card from '../../components/base/card/card'
 import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
-import nearby1 from "../../assets/images/nearby1.png"
-import nearby3 from "../../assets/images/nearby3.png"
-import nearby4 from "../../assets/images/nearby4.png"
-import nearby5 from "../../assets/images/nearby5.png"
-import nearby6 from "../../assets/images/nearby6.png"
 import { Container, Form } from 'react-bootstrap';
 import Map from '../../components/base/map/Map';
 import Subscribe from '../../components/base/subscribe now/Subscribe';
-import ImageCrousel from '../../components/base/carousel/ImageCarousel';
-import CardArticles from '../../components/base/card/CardArticles';
-import FAQ from '../../components/base/FAQ/Faq';
-import Amenities from '../../components/base/amenities/Amenities';
 import Community from '../../components/base/community/Community';
 import Expert from '../../components/base/our expert/Expert';
-import MyButton from '../../components/layout/button/button';
-import Button from 'react-bootstrap/Button';
 import Quiz from '../../components/base/Quiz/Quiz';
 import Footer from '../../components/layout/Footer/Footer';
-import DetCrousel from '../../components/base/carousel/detCrousel';
+// import whatsapp from "../../../assets/images/whatsapp-color-svgre.svg";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowUp, faEnvelope, faGears, faMagnifyingGlass, faPhone, faSliders, faSlidersH } from '@fortawesome/free-solid-svg-icons';
-import MyVerticallyCenteredModal from '../../components/base/search Filter/MyVerticallyCenteredModal';
-import { useParams } from 'react-router-dom';
-import CenteredSlider from '../../components/base/slider/Slider';
+import { Link, useParams } from 'react-router-dom';
 import SideMenue from '../../components/layout/Side-Menue/SideMenue';
+import axios from 'axios';
+import SubFooter from '../../components/layout/sub-footer/SubFooter';
 
 function DetailTwo() {
   const [selectedOption1, setSelectedOption1] = useState('property');
   const [selectedOption2, setSelectedOption2] = useState('price_range');
   const [selectedOption3, setSelectedOption3] = useState('all_bedrooms');
+  const [offlanProjects, setOfflanProjects] = useState();
   const [activeCity, setActiveCity] = useState('Appartments');
     const [activeCityB, setActiveCityB] = useState('Int');
   const [modalShow, setModalShow] = React.useState(false);
@@ -60,30 +50,48 @@ const handleSearchChange = (event) => {
 
   useEffect(() => {
     const domain = window.location.hostname;
-    console.log('Domain:', domain);
   }, []);
-    
+
   
+    useEffect(() => {
+    // Scroll to the top when the component mounts
+    window.scrollTo(0, 0);
+  }, []);  
+      const CurrentDomain = localStorage.getItem("DOMAIN")  
+
+
+   useEffect(() => {
+    axios.get(`https://salwaproperties.com/community_web/api/new_projects/${CurrentDomain}?X-API-KEY=3064c564d11154da943a1fd968822b6c`)
+      .then(response => {
+        setOfflanProjects(response?.data);
+      })
+      .catch(error => {
+        console.error('Error fetching data:', error);
+      });
+  }, []);
+  
+
+  console.log(offlanProjects, "offlanProjects---------")
   
    return (
     <>
 
 
        <div className='det-page-side-menue'>
-            <SideMenue/>
-             <div className="row-1" style={{ padding: "20px",}}>
+            <SideMenue logo={offlanProjects?.logo_image}/>
+             {/* <div className="row-1" style={{ padding: "20px",}}>
              <div className='menue-main'>
                 <div className='menue-item'>
                     <ul className='menue-ul' style={{ margin: "10px",}}>
-                        <li style={{color:"white"}}>New Projects</li>
-                        <li style={{color:"white"}}>For Sale</li>
-                        <li style={{color:"white"}}>Area Guide</li>
-                        <li style={{color:"white"}}>Life Style</li>
-                        <li style={{color:"white"}}>Find Agents</li>
+                       <Link to="/projects" className='fake-menu'> <li>New Projects</li></Link>
+                        <Link to={`/${CurrentDomain}/listing`} className='fake-menu'><li>For Buy</li></Link>
+                       <a href="#AreaGuide" className='fake-menu'><li>Area Guide</li></a>
+                       <a href={`/${CurrentDomain}#LifeStyle`} className='fake-menu'><li>Life Style</li></a>
+                        <Link to="/Agent" className='fake-menu'><li>Find Agents</li></Link>
                     </ul>
                 </div>
              </div>
-            </div>
+            </div> */}
         </div>
     <Header3 />
     {/* card slider */}
@@ -92,11 +100,11 @@ const handleSearchChange = (event) => {
       <div className='cards-main-slider'>
         <div className='cards-heading'>
           <h1>Offplan Projects in Arabian Ranches III</h1>
-          <p>see all the latest investment attractive new properties for sale in Arabian Ranches 3</p>
+          {/* <p>see all the latest investment attractive new properties for sale in Arabian Ranches 3</p> */}
         </div>
 
 
-        <div className='outer-bg-menue'>
+        {/* <div className='outer-bg-menue'>
         <div className='menue-bar'>
           <div>
           <div className='menue-parrent'>
@@ -131,7 +139,6 @@ const handleSearchChange = (event) => {
 
         <div className="modal-filter">
 
-           {/* modal */}
       <Form.Group controlId="exampleForm.ControlInputSearch">
             <Form.Control type="text" placeholder="Enter Key Words" value={searchValue} onChange={handleSearchChange} />
           </Form.Group>
@@ -146,25 +153,22 @@ const handleSearchChange = (event) => {
         show={modalShow}
         onHide={() => setModalShow(false)}
       />
-     </div>
+     </div> */}
 
 
      <div className='card-main-wrapper'>
         <Card/>
       </div>
-
-
-    <div className='view-more-button'>
+    {/* <div className='view-more-button'>
         <button className='vm-btn'>LOAD MORE</button>
-    </div>
+    </div> */}
   </div>
     </Container>
 
-      {/* Map component */}
-    <Map/>
-
+    <Map community={offlanProjects?.offplan_projects[0]?.community_name}/>
+  <br></br>
     <Container>
-      <Community/>
+      <Community ObjectForContent={offlanProjects}/>
     </Container>
 
     <Container>
@@ -178,8 +182,10 @@ const handleSearchChange = (event) => {
     <Container>
       <Expert/>
     </Container>
-
-      <Footer/>    
+  <Container>
+      <SubFooter/>
+    </Container>
+      <Footer community={offlanProjects?.offplan_projects[0]?.community_name}/>    
 
 
 <div className='mobile-navigation-menu'>

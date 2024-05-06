@@ -3,10 +3,11 @@ import img from '../../../assets/images/img1.png'
 import wadi from '../../../assets/images/wadi.jpg'
 import walit from '../../../assets/images/price_grey.svg'
 import dollar from '../../../assets/images/payment_grey.svg'
+import Popup1 from '../../Popup1'
+import Popup2 from '../../base/Popup2'
 
 
 export default function HeaderTwo({ headerObj }) {
-  console.log(headerObj, "object data here");
   
   return (
     <div>
@@ -17,12 +18,12 @@ export default function HeaderTwo({ headerObj }) {
                      <div className="col-md-6 col-lg-6 ">
                         <div className="detail-box">
                             <h2>{headerObj.title}</h2>
-                           <h2 className="scale-up-center">
+                           {/* <h2 className="scale-up-center">
                            Luxury 3 & 4BR Townhouses in Emaar Arabian Ranches III
                            </h2>
                            <p>
                            May in Arabian Ranches III is one of the most recent projects by Emaar Properties, and will be the last community in the area.
-                           </p>
+                           </p> */}
                            <div className='col-lg-12 d-flex'>
                             <div className='col-lg-6 walit-sec d-flex'>
                                 <img src={walit} alt="" />
@@ -44,15 +45,16 @@ export default function HeaderTwo({ headerObj }) {
                            DISCOVER NEW PROJECT
                               </button>
                            </a>
-                           <a href=""><button className="btn btn-default main-menu-btn btn-font main-menu-btn-1">
+                           {/* <a href=""><button className="btn btn-default main-menu-btn btn-font main-menu-btn-1">
                            GET MORE INFO
                               </button>
-                              </a>
+                              </a> */}
+                              <Popup2 text="Get More Info"/>
                               </div>
                         </div>
                      </div>
                      <div className=' col-md-6 col-lg-6 m-0 p-0'>
-                        <img src={headerObj.coverImage} alt="" className='image-right-wadi' />
+                        <img src={headerObj?.coverImage} alt="" className='image-right-wadi' />
                      </div>
                   </div>
                </div>
@@ -63,17 +65,17 @@ export default function HeaderTwo({ headerObj }) {
                <div className="container-fluid">
                   <div className="row">
                   <div className=' col-md-6 col-lg-6 m-0 p-0'>
-                        <img src={headerObj.coverImage} alt="" className='image-right-wadi' />
+                        <img src={headerObj?.coverImage} alt="" className='image-right-wadi' />
                      </div>
                      <div className="col-md-6 col-lg-6 ">
                         <div className="detail-box">
                             <h2>{headerObj.title}</h2>
-                           <h2 className="scale-up-center">
+                           {/* <h2 className="scale-up-center">
                            Luxury 3 & 4BR Townhouses in Emaar Arabian Ranches III
                            </h2>
                            <p>
                            May in Arabian Ranches III is one of the most recent projects by Emaar Properties, and will be the last community in the area.
-                           </p>
+                           </p> */}
                            <div className='col-lg-12'>
                             <div className='col-lg-6 walit-sec d-flex col-12'>
                                 <img src={walit} alt="" />

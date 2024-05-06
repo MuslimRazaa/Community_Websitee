@@ -70,7 +70,7 @@ function PropertyCard() {
 
   return (
     <div className='card-flex'>
-      {cardData.map((card) => (
+      {cardData?.map((card) => (
         <div className="card" key={card.id}>
           <img
             className="card-img-top"
@@ -91,7 +91,8 @@ function PropertyCard() {
               <p style={{ width: "140px" }}><img src={sq} width={"30px"}/> {card.sqFt} sq/fts</p>
             </div>
             <div>
-              <img src={enquire} style={{ width: "189px" }}/>
+                              <button className='enquire'>Enquire Now</button>
+              {/* <img src={enquire} style={{ width: "189px" }}/> */}
                 <FontAwesomeIcon icon={faEnvelope} style={{    fontSize: "28px",
     marginLeft: "33px",}} />
                 <FontAwesomeIcon icon={faWhatsapp} style={{    fontSize: "28px",
